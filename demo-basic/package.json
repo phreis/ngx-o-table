@@ -11,7 +11,7 @@
     "e2e": "ng e2e"
   },
   "private": true,
-   "dependencies": {
+  "dependencies": {
     "@angular/animations": "^4.0.1",
     "@angular/common": "^4.0.1",
     "@angular/compiler": "^4.0.1",
@@ -30,6 +30,7 @@
     "karma-jasmine": "^1.1.0",
     "karma-remap-istanbul": "^0.2.2",
     "moment": "^2.17.1",
+    "ngx-o-table": "0.0.0",
     "rxjs": "^5.0.1",
     "ts-helpers": "^1.1.1",
     "typescript": "^2.2.2",

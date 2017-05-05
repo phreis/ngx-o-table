@@ -34,7 +34,7 @@
     "ts-helpers": "^1.1.1",
     "typescript": "^2.2.2",
     "xml2js": "^0.4.17",
-    "zone.js": "^0.7.4"
+    "zone.js": "^0.8.4"
   },
   "devDependencies": {
     "@angular/cli": "1.0.0",
