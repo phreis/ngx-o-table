@@ -1,0 +1,7 @@
+{
+    "/V3/*": {
+    "target": "http://services.odata.org",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

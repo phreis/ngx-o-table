@@ -1,0 +1,10 @@
+<!--<p *ngIf="busy; ">
+<md-progress-bar mode='indeterminate'></md-progress-bar>
+</p>-->
+<ng-template *ngIf="busy ; then barActive else barInActive"></ng-template>
+<ng-template #barActive>
+<md-progress-bar mode='indeterminate'></md-progress-bar>
+</ng-template>
+<ng-template #barInActive>
+<md-progress-bar mode='determinate' value='0'></md-progress-bar>
+</ng-template>
