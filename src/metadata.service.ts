@@ -66,7 +66,7 @@ export class MetadataService {
     private getPropertiesOfSet(f: Object) {
         const sets = this.findElement(f, 'EntitySet');
         const entitySet = sets.filter(f => f['$']['Name'] === this._entitySetName)
-        const entityTypeName = entitySet[0]['$']['EntityType'].replace(/^[^\.]*\.(.*)/, '$1')
+        const entityTypeName = entitySet[0]['$']['EntityType'].replace(/.*\.(.*)/, '$1') 
         const entityTypes = this.findElement(f, 'EntityType');
         const entityType = entityTypes.filter(f => f['$']['Name'] === entityTypeName);
         const properties = entityType[0]['Property'];
