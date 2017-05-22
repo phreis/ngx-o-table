@@ -1,6 +1,6 @@
 {
   "name": "ngx-o-table",
-  "version": "0.0.1-0",
+  "version": "0.0.1",
   "description": "Angular 4+ table component displaying OData entities",
   "license": "MIT",
   "author": "Philipp Reisinger <philippr00@gmail.com>",
