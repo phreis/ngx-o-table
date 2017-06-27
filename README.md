@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/ngx-o-table.svg)]()
 [![downloads](https://img.shields.io/npm/dm/ngx-o-table.svg)]()
 
-A lightweight, generic [Angular 4+](https://github.com/angular/angular) component to display data provided by an [Odata](http://www.odata.org/) source.
+A lightweight, generic [Angular (v2+)](https://github.com/angular/angular) component to display data provided by an [Odata](http://www.odata.org/) source.
 
 ## Features
 - Metadata driven
@@ -12,7 +12,7 @@ A lightweight, generic [Angular 4+](https://github.com/angular/angular) componen
 - Pagination included
 
 ## Working with
-- Angular 4.x
+- Angular (v2+)
 
 ## Installation
 To use ngx-o-table in your project install it via [npm](https://www.npmjs.com/package/ngx-o-table):
