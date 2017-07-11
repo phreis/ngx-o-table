@@ -13,8 +13,8 @@ import { CustomHttpMonitor } from './custom-http-monitor/custom-http-monitor.com
 import { CustomHttpMonitorService } from './custom-http-monitor.service';
 import { GenericListComponent } from './generic-list/generic-list.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MdSpinner, MdProgressBarModule} from '@angular/material';
-
+import { MdSpinner, MdProgressBarModule, MdTableModule} from '@angular/material';
+import { CdkTableModule } from '@angular/cdk'
 
 @NgModule({
   imports: [
@@ -22,7 +22,9 @@ import { MdSpinner, MdProgressBarModule} from '@angular/material';
     FormsModule, 
     HttpModule, 
     BrowserAnimationsModule,
-    MdProgressBarModule
+    MdProgressBarModule,
+    MdTableModule,
+    CdkTableModule 
   ],
   declarations: [
     FieldcatalogPipe,

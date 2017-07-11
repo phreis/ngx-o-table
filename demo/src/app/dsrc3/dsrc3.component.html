@@ -1,4 +1,4 @@
-<div class="col-sm-2">
+
     <ng-template [ngIf]="entitySets">
         <md-select placeholder= "Select Entity Set" >
             <md-option *ngFor="let set of entitySets" (click)="onSelectSet(set)" [value]="set.$.Name">
@@ -6,8 +6,7 @@
             </md-option>
         </md-select>
     </ng-template>
-</div>
-<div class="col-sm-10">
+
+
     <ngx-o-table [serviceUrl]="serviceUrl" itemsPerPage='5' maxPagesInPagination='3'>
     </ngx-o-table>
-</div>

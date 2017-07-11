@@ -1,6 +1,26 @@
 <ng-template *ngIf="entities; then table else loading"></ng-template>
-<ng-template #table>
-    <h1>{{ entitySetName }}</h1>
+<ng-template #table>    
+ <h1 class="mat-display-1">{{ entitySetName }}</h1>
+<div class="example-container mat-elevation-z8">
+  <md-table #table2 [dataSource]="dataSource">
+    <ng-container  *ngFor="let column of columns" [cdkColumnDef]="column.fieldname" [style.display]="column.display">
+      <md-header-cell *cdkHeaderCellDef>{{ column.coltext }}</md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row[column.fieldname] | fieldcatalogPipe:column.formatfunction }} </md-cell>
+    </ng-container>
+    <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+    <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+  </md-table>
+</div>
+
+
+
+
+
+
+
+
+
+   <!-- <h1>{{ entitySetName }}</h1>
     <p>ServiceUrl: <strong>{{ serviceUrl }}</strong></p>
     <table class='table table-striped'>
         <thead>
@@ -15,22 +35,28 @@
                 <td *ngFor="let column of columns" [style.display]="column.display">{{ entity[column.fieldname] | fieldcatalogPipe:column.formatfunction }}</td>
             </tr>
         </tbody>
-    </table>
+    </table>-->
     <div *ngIf="totalItems >0">
         <ng-pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxPagesInPagination" [itemsPerPage]="itemsPerPage"
             (pageChanged)="pageChanged($event)" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="First" last-text="Last"></ng-pagination>
     </div>
 </ng-template>
 <ng-template #loading>
-    <div class="jumbotron jumbotron-fluid">
+<!--    <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <div *ngIf="is_init; else elseBlock">
-                <h1 class="display-3">&lt;--Pick your OData Entity Set</h1>
+                <h1 class="display-3">&lt;Pick your OData Entity Set</h1>
             </div>
             <ng-template #elseBlock>
                 <h1 class="display-3">Refreshing...</h1>
             </ng-template>
             <p class="lead">We're on Service: {{ serviceUrl }}</p>
         </div>
-    </div>
+    </div>-->
+                <div *ngIf="is_init; else elseBlock">
+                <h1 class="mat-display-1">&lt;Pick your OData Entity Set</h1>
+            </div>
+            <ng-template #elseBlock>
+                <h1 class="mat-display-1">Refreshing...</h1>
+            </ng-template>
 </ng-template>
