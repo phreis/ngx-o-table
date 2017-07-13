@@ -9,9 +9,9 @@ import 'rxjs/add/operator/share';
 import { parseString } from 'xml2js';
 @Injectable()
 export class MetadataService {
-    private metadtaUrl;
+    private metadtaUrl: string;
     private ObservableBuffer: Observable<Object> = null;
-    private _entitySetName;
+    private _entitySetName: string;
 
     constructor(private http: CustomHttp) { }
 
@@ -35,7 +35,7 @@ export class MetadataService {
     private parseXML(res: Response) {
 
         let metadata: Object;
-        parseString(res.text(), function (err, result) {
+        parseString(res.text(), function (err: any, result: any) {
             metadata = result;
         });
         return metadata;
@@ -65,10 +65,10 @@ export class MetadataService {
 
     private getPropertiesOfSet(f: Object) {
         const sets = this.findElement(f, 'EntitySet');
-        const entitySet = sets.filter(f => f['$']['Name'] === this._entitySetName)
+        const entitySet = sets.filter((f: any) => f['$']['Name'] === this._entitySetName)
         const entityTypeName = entitySet[0]['$']['EntityType'].replace(/.*\.(.*)/, '$1') 
         const entityTypes = this.findElement(f, 'EntityType');
-        const entityType = entityTypes.filter(f => f['$']['Name'] === entityTypeName);
+        const entityType = entityTypes.filter((f: any) => f['$']['Name'] === entityTypeName);
         const properties = entityType[0]['Property'];
         return properties;
     }

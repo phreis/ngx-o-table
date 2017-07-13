@@ -31,8 +31,8 @@ export class GenericListComponent implements OnInit {
     private fieldcatalog: Fieldcatalog;
 
 
-    public currentPage;
-    public totalItems;
+    public currentPage: number;
+    public totalItems: number;
 
 is_init: boolean = true;
 

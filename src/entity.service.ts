@@ -10,8 +10,8 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class EntityService {
   //private auth: string = `Basic ...`; // vhcalnplcs
-  private auth;
-  private baseUrl;
+  private auth: string = '';
+  private baseUrl: string = '';
   constructor(private http: CustomHttp) {
   }
 
