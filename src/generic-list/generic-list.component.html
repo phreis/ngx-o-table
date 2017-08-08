@@ -2,14 +2,14 @@
 <ng-template #table>    
  <h1 class="mat-display-1">{{ entitySetName }}</h1>
 <div class="example-container mat-elevation-z8">
-  <md-table #table2 [dataSource]="dataSource">
+    <md-table #table2 [dataSource]="dataSource">
     <ng-container  *ngFor="let column of columns" [cdkColumnDef]="column.fieldname" [style.display]="column.display">
-      <md-header-cell *cdkHeaderCellDef>{{ column.coltext }}</md-header-cell>
+      <md-header-cell  *cdkHeaderCellDef>{{ column.coltext }}</md-header-cell>
       <md-cell *cdkCellDef="let row"> {{row[column.fieldname] | fieldcatalogPipe:column.formatfunction }} </md-cell>
     </ng-container>
-    <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
-    <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
-  </md-table>
+    <md-header-row class="example-header" *cdkHeaderRowDef="displayedColumns"></md-header-row>
+    <md-row class="example-row" *cdkRowDef="let row; columns: displayedColumns;"></md-row> 
+</md-table>
 </div>
 
 
@@ -20,7 +20,8 @@
 
 
 
-   <!-- <h1>{{ entitySetName }}</h1>
+
+   <!--  <h1>{{ entitySetName }}</h1>
     <p>ServiceUrl: <strong>{{ serviceUrl }}</strong></p>
     <table class='table table-striped'>
         <thead>
@@ -35,11 +36,11 @@
                 <td *ngFor="let column of columns" [style.display]="column.display">{{ entity[column.fieldname] | fieldcatalogPipe:column.formatfunction }}</td>
             </tr>
         </tbody>
-    </table>-->
-    <div *ngIf="totalItems >0">
+    </table> -->
+     <div *ngIf="totalItems >0">
         <ng-pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxPagesInPagination" [itemsPerPage]="itemsPerPage"
             (pageChanged)="pageChanged($event)" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="First" last-text="Last"></ng-pagination>
-    </div>
+    </div> 
 </ng-template>
 <ng-template #loading>
 <!--    <div class="jumbotron jumbotron-fluid">

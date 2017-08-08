@@ -5,8 +5,8 @@
                 {{ set.$.Name}}
             </md-option>
         </md-select>
+       <ngx-o-table [serviceUrl]="serviceUrl" itemsPerPage='5' maxPagesInPagination='3'>
+    </ngx-o-table>
     </ng-template>
 
 
-    <ngx-o-table [serviceUrl]="serviceUrl" itemsPerPage='5' maxPagesInPagination='3'>
-    </ngx-o-table>

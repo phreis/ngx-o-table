@@ -54,8 +54,8 @@ export class PaginationDirective implements ControlValueAccessor, OnInit {
   private selectedPage: number;
   private nextItem: number;
   private previousItem: number;
-  private nextItemValid: boolean;
-  private previousItemValid: boolean;
+   nextItemValid: boolean;
+   previousItemValid: boolean;
 
 
   private isLoading: boolean;

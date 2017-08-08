@@ -13,9 +13,9 @@ import { CustomHttpMonitor } from './custom-http-monitor/custom-http-monitor.com
 import { CustomHttpMonitorService } from './custom-http-monitor.service';
 import { GenericListComponent } from './generic-list/generic-list.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MdSpinner, MdProgressBarModule, MdTableModule} from '@angular/material';
-import { CdkTableModule } from '@angular/cdk'
-
+import { MdProgressBarModule, MdTableModule} from '@angular/material';
+import { CdkTableModule } from '@angular/cdk' 
+import { MaterialModule } from '@angular/material';
 @NgModule({
   imports: [
     CommonModule, 
@@ -24,14 +24,14 @@ import { CdkTableModule } from '@angular/cdk'
     BrowserAnimationsModule,
     MdProgressBarModule,
     MdTableModule,
-    CdkTableModule 
+     CdkTableModule,
+     MaterialModule 
   ],
   declarations: [
     FieldcatalogPipe,
     PaginationDirective,
     GenericListComponent,
-    CustomHttpMonitor,
-    MdSpinner
+    CustomHttpMonitor
   ],
   exports: [ GenericListComponent, CustomHttpMonitor ],
   providers: [

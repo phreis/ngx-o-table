@@ -1,11 +1,17 @@
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
 @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500);
-/* Structure */
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+ @import '~@angular/material/prebuilt-themes/indigo-pink.css';    
+
+md-table {
+ font-family: Roboto;
+ }
+ /* Structure */
 .example-container {
   display: flex;
   flex-direction: column;
   max-height: 500px;
-  min-width: 300px;
+  min-width: 500px;
 }
 
 .example-header {
@@ -16,6 +22,12 @@
   font-size: 20px;
 }
 
+.example-row {
+overflow: hidden;
+column-width: auto;
+
+}
 .mat-table {
   overflow: auto;
 }
+
