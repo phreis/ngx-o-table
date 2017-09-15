@@ -2,16 +2,18 @@ import { FieldcatalogFormatFunctions } from './../fieldcatalog.format.functions'
 import { EntityService } from './../entity.service';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { Component, OnInit, Input, Output, Injectable, HostBinding, SimpleChanges } from '@angular/core';
-import { MetadataService } from '../metadata.service'
+
 
 import { FieldCatalogField } from '../fieldcatalog.field';
 import { Fieldcatalog } from '../fieldcatalog';
 import { Observable } from 'rxjs/Observable';
+
+import { OService, OModel, OHeader } from 'o-serv';
 @Component({
     selector: 'ngx-o-table',
     templateUrl: './generic-list.component.html',
     styleUrls: ['./generic-list.component.css'],
-    providers: [EntityService, MetadataService]
+    providers: [EntityService]
 })
 
 export class GenericListComponent implements OnInit {
@@ -25,7 +27,8 @@ export class GenericListComponent implements OnInit {
             this.init();
         }*/
 
-    entities: Object[];
+    entities: Object;
+    entities_: Object;
     columns: FieldCatalogField[];
     selectedEntity: Object;
     private fieldcatalog: Fieldcatalog;
@@ -34,30 +37,37 @@ export class GenericListComponent implements OnInit {
     public currentPage: number;
     public totalItems: number;
 
-is_init: boolean = true;
+    is_init: boolean = true;
+    serv: OService;
+    model: OModel;
 
-
-    constructor(public EntityService: EntityService, public mtsrv: MetadataService) {
+    constructor(public EntityService: EntityService) {
         if (!this.itemsPerPage) { this.itemsPerPage = 5 };
         if (!this.maxPagesInPagination) { this.maxPagesInPagination = 3 };
+
     }
 
     ngOnInit(): void {
         this.init();
     }
 
-    private init(){
+    private init() {
         this.entities = null;
         this.currentPage = 1;
         this.EntityService.setServiceUrl(this.serviceUrl);
-        this.mtsrv.setServiceUrl(this.serviceUrl);
+
+        this.serv = OService.getInstance(this.serviceUrl);
+        this.model = this.serv.getModel(this.entitySetName);
+        this.model.count().subscribe(cnt => {
+            const tmp = cnt; console.log(cnt)
+        });
         if (this.entitySetName) {
             this.getColumns().subscribe(columns => {
                 this.columns = columns;
-                this.EntityService.getEntityCount(this.entitySetName).subscribe(cnt => {
-                    this.totalItems = cnt;
-                    this.EntityService.getEntitySkipTop(this.entitySetName, '0', this.itemsPerPage.toString()).subscribe(entities => { this.entities = entities; this.is_init = false;});
-
+                this.model.count().subscribe(cnt => {
+                    this.totalItems = Number(cnt);
+                    this.model.getEntitySkipTop('0', this.itemsPerPage.toString())
+                    .subscribe(entities => { this.entities = entities; this.is_init = false; });
                 })
             });
         }
@@ -68,12 +78,12 @@ is_init: boolean = true;
     }
 
     getColumns(): Observable<FieldCatalogField[]> {
-        return this.mtsrv.getMetadataProperties(this.entitySetName)
+        return this.model.getMetadata()
             .map(this.mergeWithFieldcatalog)
     };
 
     getSetsAll(): Observable<Object[]> {
-        return this.mtsrv.getEntitySets();
+        return this.serv.getEntitySets();
     }
 
     updateColumns(columns: FieldCatalogField[]) {
@@ -90,7 +100,7 @@ is_init: boolean = true;
     };
 
     public pageChanged(event: any): void {
-        this.EntityService.getEntitySkipTop(this.entitySetName, ((event.itemNumber - 1) * this.itemsPerPage).toString(), this.itemsPerPage.toString()).subscribe(entities => { this.entities = entities; });
+        this.model.getEntitySkipTop(((event.itemNumber - 1) * this.itemsPerPage).toString(), this.itemsPerPage.toString()).subscribe(entities => { this.entities = entities; });
     };
     public updateEntitySetName(entitySetName: string) {
         this.entitySetName = entitySetName;

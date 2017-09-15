@@ -5,8 +5,8 @@ import { Component } from '@angular/core';
   template:
   `
   <ngx-o-table
-    [entitySetName]="'Products'" 
-    [serviceUrl]="'/V3/Northwind/Northwind.svc/'" >
+    [entitySetName]="'BusinessPartnerSet'" 
+    [serviceUrl]="'/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/'" >
   </ngx-o-table> 
   `,
 })

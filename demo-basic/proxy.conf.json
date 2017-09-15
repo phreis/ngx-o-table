@@ -1,5 +1,9 @@
 {
-    "/V3/*": {
+  "/sap/*": {
+    "target": "https://vhcalnplcs.dummy.nodomain:44300",
+    "secure": false
+  },
+  "/V3/*": {
     "target": "http://services.odata.org",
     "secure": false,
     "changeOrigin": true
