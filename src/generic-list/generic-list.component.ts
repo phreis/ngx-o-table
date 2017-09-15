@@ -28,7 +28,6 @@ export class GenericListComponent implements OnInit {
         }*/
 
     entities: Object;
-    entities_: Object;
     columns: FieldCatalogField[];
     selectedEntity: Object;
     private fieldcatalog: Fieldcatalog;
@@ -73,18 +72,19 @@ export class GenericListComponent implements OnInit {
         }
     };
 
-    private mergeWithFieldcatalog(f: Object) {
-        return new Fieldcatalog(f).getFields();
-    }
+    private _mergeWithFieldcatalog(meta: Object) {
+       return new Fieldcatalog(meta).getFields();
+
+}
 
     getColumns(): Observable<FieldCatalogField[]> {
         return this.model.getMetadata()
-            .map(this.mergeWithFieldcatalog)
+            .map(this._mergeWithFieldcatalog)
     };
 
-    getSetsAll(): Observable<Object[]> {
+/*     getSetsAll(): Observable<Object> {
         return this.serv.getEntitySets();
-    }
+    } */
 
     updateColumns(columns: FieldCatalogField[]) {
         this.columns = columns;
