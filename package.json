@@ -30,7 +30,8 @@
   "dependencies": {
     "@angular/http": "^4.0.1",
     "moment": "^2.17.1",
-    "xml2js": "^0.4.17"
+    "xml2js": "^0.4.17",
+    "o-serv": "~1.0.2"
   },
   "peerDependencies": {
     "@angular/common": "^4.0.1",
