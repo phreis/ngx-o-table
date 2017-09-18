@@ -1,5 +1,5 @@
 import { FieldcatalogFormatFunctions } from './../fieldcatalog.format.functions';
-import { EntityService } from './../entity.service';
+
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { Component, OnInit, Input, Output, Injectable, HostBinding, SimpleChanges } from '@angular/core';
 
@@ -13,7 +13,7 @@ import { OService, OModel, OHeader } from 'o-serv';
     selector: 'ngx-o-table',
     templateUrl: './generic-list.component.html',
     styleUrls: ['./generic-list.component.css'],
-    providers: [EntityService]
+
 })
 
 export class GenericListComponent implements OnInit {
@@ -22,10 +22,7 @@ export class GenericListComponent implements OnInit {
     @Input() serviceUrl: string;
     @Input() itemsPerPage: number;
     @Input() maxPagesInPagination: number;
-    /*    ngOnChanges(changes: SimpleChanges) {
-            this.entitySetName = changes.entitySetName.currentValue;
-            this.init();
-        }*/
+
 
     entities: Object;
     columns: FieldCatalogField[];
@@ -40,7 +37,7 @@ export class GenericListComponent implements OnInit {
     serv: OService;
     model: OModel;
 
-    constructor(public EntityService: EntityService) {
+    constructor() {
         if (!this.itemsPerPage) { this.itemsPerPage = 5 };
         if (!this.maxPagesInPagination) { this.maxPagesInPagination = 3 };
 
@@ -53,13 +50,10 @@ export class GenericListComponent implements OnInit {
     private init() {
         this.entities = null;
         this.currentPage = 1;
-        this.EntityService.setServiceUrl(this.serviceUrl);
+
 
         this.serv = OService.getInstance(this.serviceUrl);
         this.model = this.serv.getModel(this.entitySetName);
-        this.model.count().subscribe(cnt => {
-            const tmp = cnt; console.log(cnt)
-        });
         if (this.entitySetName) {
             this.getColumns().subscribe(columns => {
                 this.columns = columns;
@@ -77,14 +71,14 @@ export class GenericListComponent implements OnInit {
 
 }
 
-    getColumns(): Observable<FieldCatalogField[]> {
+    getColumns(){
         return this.model.getMetadata()
             .map(this._mergeWithFieldcatalog)
     };
 
-/*     getSetsAll(): Observable<Object> {
+    getSetsAll() {
         return this.serv.getEntitySets();
-    } */
+    }
 
     updateColumns(columns: FieldCatalogField[]) {
         this.columns = columns;

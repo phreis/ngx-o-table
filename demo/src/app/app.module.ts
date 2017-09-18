@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { OtableModule } from 'ngx-o-table';
+import { Dsrc1Component } from './dsrc1/dsrc1.component';
 import { Dsrc2Component } from './dsrc2/dsrc2.component';
 import { Dsrc3Component } from './dsrc3/dsrc3.component';
 import { MdSelectModule } from '@angular/material';
@@ -10,6 +11,7 @@ import { Dsrc5CdsComponent } from './dsrc5-cds/dsrc5-cds.component';
 @NgModule({
   declarations: [
     AppComponent,
+    Dsrc1Component,
     Dsrc2Component,
     Dsrc3Component,
     Dsrc4Component,

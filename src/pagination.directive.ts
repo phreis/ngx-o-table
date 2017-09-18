@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit, SimpleChanges } from '@angular/core';
 import { NgModel, ControlValueAccessor } from '@angular/forms';
-import { CustomHttpMonitorService } from './custom-http-monitor.service';
 
 @Component({
   selector: 'ng-pagination[ngModel]',
@@ -60,10 +59,8 @@ export class PaginationDirective implements ControlValueAccessor, OnInit {
 
   private isLoading: boolean;
 
-  constructor(private pageChangedNgModel: NgModel, private monitorService: CustomHttpMonitorService) {
+  constructor(private pageChangedNgModel: NgModel) {
     this.pageChangedNgModel.valueAccessor = this;
-//    monitorService.busyObserver.subscribe((status) => { this.isLoading = status });
-
   }
 
   getLoadingClass(pageNo: number): string {

@@ -1,9 +1,9 @@
 
-export class FieldCatalogField{
-public fieldname: string;
-public col_id: number;
-public col_pos: number;
-public coltext: string;
-public display: string;
-public formatfunction: string;
+export interface FieldCatalogField{
+fieldname: string;
+ col_id: number;
+col_pos: number;
+coltext: string;
+ display: string;
+ formatfunction: string;
 }

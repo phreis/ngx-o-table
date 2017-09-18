@@ -14,7 +14,6 @@ export class Dsrc1Component implements OnInit, AfterViewInit {
     @ViewChild(GenericListComponent)
     private productsList: GenericListComponent;
     ngAfterViewInit() {
-        this.productsList.getSetsAll().subscribe(sets=>{this.entitySets = sets; });
         this.productsList.getColumns().subscribe(columns => {
             for (let field of columns) {
                 switch (field.fieldname) {
