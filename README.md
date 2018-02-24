@@ -1,7 +1,6 @@
 # ngx-o-table
 
 [![npm](https://img.shields.io/npm/v/ngx-o-table.svg)]()
-[![downloads](https://img.shields.io/npm/dm/ngx-o-table.svg)]()
 
 A lightweight, generic [Angular (v2+)](https://github.com/angular/angular) component to display data provided by an [Odata](http://www.odata.org/) source.
 
