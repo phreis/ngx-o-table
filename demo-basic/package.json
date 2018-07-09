@@ -28,7 +28,7 @@
     "core-js": "^2.4.1",
     "karma-jasmine": "^1.1.0",
     "karma-remap-istanbul": "^0.2.2",
-    "moment": "^2.17.1",
+    "moment": "^2.22.2",
     "ngx-o-table": "~0.0.1-0",
     "rxjs": "^5.0.1",
     "ts-helpers": "^1.1.1",
